@@ -1,42 +1,35 @@
 # Introducir datos a la variable.
-N = int(raw_input('Ingresar Capital: '))
 
-# Variables Billetes.
-a = 500
-b = 200
-c = 100
-d = 50
-e = 20
-f = 10
-g = 5
 
-# Variables Monedas.
-h = 2
-i = 1
+   """
+    (num) -> str
+    Escribe el mensaje 'El numero es negativo' cuando el numero es
+    menor que cero
+    >>> es_negativo(0.0)
+    ''
+    >>> desglose(100)
+    'La cantidad de 100 euros se desglosa en 1 billete de 100 euros'
+    >>> desglose(438)
+    'La cantidad de 438 euros se desglosa en:
+    2 billetes de 200 euros
+    1 billete de 20 euros
+    1 billete de 10 euros
+    1 billete de 5 euros
+    1 moneda de 2 euros
+    1 moneda de 1 euros'
+    :param num: el numero a evaluar
+    :return: el mensaje resultante, con la cantidad de billetes y monedas disponibles para desglosar el valor del usuario
+    """
 
-numero_de_billetes_500 = N / 500
-N = N % 500
+def desglose(cantidad): 
+    billetes_monedas=[500,200,100,50,20,10,5,2,1] 
+    print ("La cantidad de " + str(cantidad) + " euros se desglosa en:") 
+    for i in billetes_monedas: 
+        if cantidad / i >= 1: 
+            suelto = cantidad // i 
+            print(str(suelto) + (" billete" if i > 2 else " moneda") + ('s' if (suelto) > 1 else '') + " de "+ str(i) + " euros") 
+            cantidad %= i 
 
-numero_de_billetes_200 = N / 200
-N = N % 200
 
-numero_de_billetes_100 = N / 100
-N = N % 100
-
-numero_de_billetes_50 = N / 50
-N = N % 50
-
-numero_de_billetes_20 = N / 20
-N = N % 20
-
-numero_de_billetes_10 = N / 10
-N = N % 10
-
-numero_de_billetes_5 = N / 5
-N = N % 5
-
-numero_de_billetes_2 = N / 2
-N = N % 2
-
-numero_de_billetes_1 = N / 1
-N = N % 1
+cantidad = int(input("Ingresa un valor "))
+desglose(cantidad)
